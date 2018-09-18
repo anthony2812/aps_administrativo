@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 //Inicializacion de express 
 const app = express();
 
+//Inicializacion de variables
+app.set('port', process.env.PORT || 3000);
+
 //Body Parser
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -28,6 +31,6 @@ mongoose.connection.openUri('mongodb://localhost:27017/apsAdministrativo', (err,
     console.log('Base de datos: \x1b[32m%s\x1b[0m', 'online');
 });
 //escuchar peticiones
-app.listen(3000, () => {
+app.listen(app.get('port'), () => {
     console.log('Servidor: \x1b[32m%s\x1b[0m', 'online');
 });

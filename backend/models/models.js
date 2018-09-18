@@ -1,11 +1,22 @@
-const mongoose = require('mongoose');
+const models = {};
 
-var Schema = mongoose.Schema;
+models.test = (req, res) => {
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM test', (err, rows) => {
+            if (err) {
+                res.status(400).json({
+                    ok: false,
+                    mensaje: 'Hubo un error en la bd ' + err
+                });
 
-var modeloSchema = new Schema({
-    nombre: { type: String, required: false },
-    img: { type: String, required: false },
+                return;
+            }
+            res.status(200).json({
+                ok: true,
+                mensaje: rows
+            });
+        });
+    });
+};
 
-});
-
-module.exports = mongoose.model('Modelos', modeloSchema); // aqui es q se determina el nombre de la coleccion o tabla
+module.exports = models;

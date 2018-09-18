@@ -1,14 +1,10 @@
 const express = require('express');
-const app = express();
+const router = express.Router();
+const testController = require('../controllers/testController');
 
 
-app.get('/', (req, res, next) => {
-    res.status(200).json({
-        ok: true,
-        mensaje: 'Peticion realizada correctamente'
-    });
-});
+router.get('/', testController.test);
 
 
 
-module.exports = app;
+module.exports = router;

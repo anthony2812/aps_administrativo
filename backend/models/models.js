@@ -1,33 +1,16 @@
+//Global variables
+const jwt = require('jsonwebtoken');
+var SEED = require('../config/config').SEED;
 const models = {};
 let tryLogin = 0;
+let token;
 
 
-models.test = (req, res) => {
-    req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM test', (err, rows) => {
-            if (err) {
-                res.status(500).json({
-                    ok: false,
-                    mensaje: 'Hubo un error en la bd ' + err
-                });
-
-                return;
-            }
-            res.status(200).json({
-                ok: true,
-                mensaje: rows
-            });
-        });
-    });
-};
-
+//Login model
 models.login = (req, res) => {
-
     const data = req.body;
-
     req.getConnection((err, conn) => {
         conn.query('SELECT username,password,status FROM usuario WHERE username = ?', [data.username], (err, rows) => {
-
             if (err) {
                 res.status(500).json({
                     success: false,
@@ -46,10 +29,19 @@ models.login = (req, res) => {
                     });
                 }
                 if (rows[0].password === data.password) {
+                    token = jwt.sign({ username: data.username }, SEED)
+                        //guardamos en el localStorage
+                    if (typeof localStorage === "undefined" || localStorage === null) {
+                        var LocalStorage = require('node-localstorage').LocalStorage;
+                        localStorage = new LocalStorage('./scratch');
+                    }
+                    localStorage.setItem('token', token);
+
                     res.status(200).json({
                         success: true,
                         code: '002',
-                        message: rows
+                        message: rows,
+                        token: token
                     });
                 } else {
                     if (tryLogin < 5) {
@@ -62,7 +54,6 @@ models.login = (req, res) => {
 
                         });
                     } else {
-
                         conn.query("UPDATE usuario SET status = 0 WHERE username = ?", [data.username]);
                         return res.status(400).json({
                             success: false,
@@ -71,21 +62,29 @@ models.login = (req, res) => {
                         });
                     }
                 }
-
-
             } else {
-
                 res.status(400).json({
                     success: false,
                     code: '053',
                     message: "El usuario es incorrecto"
                 });
-
-
             }
 
         });
     });
+};
+
+models.otherpage = (req, res) => {
+    if (typeof localStorage === "undefined" || localStorage === null) {
+        console.log("no hay nadie en el localStorage");
+        return;
+    }
+    console.log(localStorage.getItem('token'));
+    return res.json({
+        ok: true,
+        token: token
+    });
+
 };
 
 module.exports = models;

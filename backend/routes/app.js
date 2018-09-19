@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const testController = require('../controllers/testController');
+const generalController = require('../controllers/generalController');
 
 
-router.get('/', testController.test);
-router.post('/login', testController.login);
-
+router.post('/login', generalController.login);
+router.get('/other', generalController.otherpage);
 
 
 module.exports = router;

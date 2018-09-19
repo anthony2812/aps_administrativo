@@ -4,6 +4,7 @@ const testController = require('../controllers/testController');
 
 
 router.get('/', testController.test);
+router.post('/login', testController.login);
 
 
 

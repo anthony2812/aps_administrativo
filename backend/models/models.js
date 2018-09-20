@@ -74,17 +74,11 @@ models.login = (req, res) => {
     });
 };
 
-models.otherpage = (req, res) => {
-    if (typeof localStorage === "undefined" || localStorage === null) {
-        console.log("no hay nadie en el localStorage");
-        return;
-    }
-    console.log(localStorage.getItem('token'));
-    return res.json({
+//Test
+models.other = (req, res) => {
+    res.json({
         ok: true,
-        token: token
+        message: "This is other page"
     });
-
-};
-
+}
 module.exports = models;

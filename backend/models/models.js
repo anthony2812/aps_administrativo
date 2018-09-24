@@ -10,7 +10,7 @@ let token;
 models.login = (req, res) => {
     const data = req.body;
     req.getConnection((err, conn) => {
-        conn.query('SELECT username,password,status FROM usuario WHERE username = ?', [data.username], (err, rows) => {
+        conn.query('SELECT username,password,status,id_empresa FROM usuario WHERE username = ?', [data.username], (err, rows) => {
             if (err) {
                 res.status(500).json({
                     success: false,
@@ -25,22 +25,16 @@ models.login = (req, res) => {
                     return res.status(200).json({
                         success: false,
                         code: '054',
-                        message: 'El usuario se encuentra bloqueado por favor contactar a su soporte'
+                        message: 'El usuario se encuentra bloqueado'
                     });
                 }
                 if (rows[0].password === data.password) {
                     token = jwt.sign({ username: data.username }, SEED)
-                        //guardamos en el localStorage
-                    if (typeof localStorage === "undefined" || localStorage === null) {
-                        var LocalStorage = require('node-localstorage').LocalStorage;
-                        localStorage = new LocalStorage('./scratch');
-                    }
-                    localStorage.setItem('token', token);
 
                     res.status(200).json({
                         success: true,
                         code: '002',
-                        message: rows,
+                        message: { username: rows[0].username, status: rows[0].status, id_empresa: rows[0].id_empresa },
                         token: token
                     });
                 } else {
@@ -66,7 +60,7 @@ models.login = (req, res) => {
                 res.status(400).json({
                     success: false,
                     code: '053',
-                    message: "El usuario es incorrecto"
+                    message: "El usuario es incorrecto",
                 });
             }
 
@@ -74,11 +68,63 @@ models.login = (req, res) => {
     });
 };
 
+//Registro model
+models.register = (req, res) => {
+    const data = req.body;
+
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM usuario WHERE username = ?', [data.username], (err, rows) => {
+            if (err) {
+                res.status(500).json({
+                    success: false,
+                    code: '005',
+                    message: 'Hubo un error en la bd ' + err
+                });
+
+                return;
+            }
+            if (rows.length > 0) {
+
+                res.status(200).json({
+                    success: true,
+                    code: '002',
+                    message: 'Usuario ya existe',
+                    data: { username: rows[0].username, status: rows[0].status, timestamp: rows[0].timestamp, id_empresa: rows[0].id_empresa, rol: rows[0].rol_usuario },
+                    token: token
+                });
+
+            } else {
+                conn.query('INSERT INTO usuario (username,password,status,timestamp,id_empresa,rol_usuario) VALUES(?,?,?,?,?,?) ', [data.username, data.password, 1, new Date(), data.id_empresa, data.rol_usuario], (err, rows) => {
+                    if (err) {
+                        return res.status(500).json({
+                            success: false,
+                            code: '005',
+                            message: 'Hubo un error en la bd ' + err
+                        });
+                    }
+                    res.status(201).json({
+                        success: true,
+                        code: '021',
+                        message: 'Usuario Insertado con exito ',
+                    });
+                });
+
+            }
+
+        });
+    });
+};
+
+
+
+
 //Test
 models.other = (req, res) => {
+
     res.json({
         ok: true,
-        message: "This is other page"
+        message: "This is other page",
+        timestamp: new Date()
     });
 }
 module.exports = models;

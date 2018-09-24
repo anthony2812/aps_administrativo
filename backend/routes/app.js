@@ -4,6 +4,7 @@ const generalController = require('../controllers/generalController');
 var middlewareAuth = require('../middlewares/AuthJWT');
 
 router.post('/login', generalController.login);
+router.post('/register', middlewareAuth.checkToken, generalController.register);
 router.get('/other', middlewareAuth.checkToken, generalController.other);
 
 

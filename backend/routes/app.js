@@ -11,7 +11,7 @@ router.post('/register', middlewareAuth.checkToken, generalController.register);
 router.post('/getUsers', middlewareAuth.checkToken, generalController.getUser);
 
 //Set Permission
-router.get('/permissions', generalController.setPermissions);
+router.put('/permissions/:user_id', generalController.setPermissions);
 
 //Templates
 router.post('/createtemplates', middlewareAuth.checkToken, generalController.createTemplate);

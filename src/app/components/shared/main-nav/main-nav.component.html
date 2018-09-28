@@ -1,0 +1,61 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+        <mat-toolbar color="primary">Menu</mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item href="#">Link 1</a>
+            <a mat-list-item href="#">Link 2</a>
+            <a mat-list-item href="#">Link 3</a>
+            <a mat-list-item href="#">Link 3</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <mat-toolbar-row class="color-input-search d-flex justify-content-between">
+                <div class="container-logo-nav">
+                    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+                            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+                            </button>
+                    <img src="../../../../assets/img/logo-aps.png" class="logo-nav img-fluid" alt="Corporacion APS">
+                    <span class="logo-nav-responsive">Corporación APS</span>
+                </div>
+                <div class="search-center">
+                    <form>
+                        <mat-form-field>
+                            <mat-label> </mat-label>
+                            <input type="text" placeholder="Buscar una función o recurso" aria-label="Number" matInput [formControl]=" listMenu " [matAutocomplete]="auto " (ngModelChange)="updatedVal($event)" (focus)="changeColor()" (blur)="changeColor2()">
+                            <mat-icon matSuffix class="icon-search" [ngClass]="{ 'icon-search-color': showColorBlack} ">search</mat-icon>
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option [ngClass]="{ 'hide-autocomplete': !showAutocomplete} " *ngFor="let menuPrincipal of filteredOptions | async " [value]="menuPrincipal ">
+                                    {{menuPrincipal}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </form>
+                </div>
+                <div class="d-flex flex-row-reverse">
+                    <app-menu-top-right></app-menu-top-right>
+                </div>
+            </mat-toolbar-row>
+            <mat-toolbar-row class="justify-content-center background-color-white hide-menu ">
+                <ul class="nav lighten-4 p-1 ">
+                    <li class="nav-item ">
+                        <a mat-button class="button-menu " href=" ">Link 1</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a mat-button class="button-menu " href=" ">Link 2</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a mat-button class="button-menu " href=" ">Link 3</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a mat-button class="button-menu " disabled href=" ">Link 4</a>
+                    </li>
+                </ul>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <!-- menu -->
+
+        <!-- contenido de la web -->
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

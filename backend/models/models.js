@@ -150,7 +150,67 @@ models.getUser = (req, res) => {
 
 //Asignar Permisologia a usuarios
 models.setPermissions = (req, res) => {
-    console.log("servicio");
+    let id_usuario = req.params.user_id;
+    let id_permiso;
+    let data = req.body;
+    req.getConnection((err, conn) => {
+        conn.query('SELECT id_permiso FROM permisologia WHERE id_usuario = ?', [id_usuario], (err, rows) => {
+            if (err) {
+                res.status(500).json({
+                    success: false,
+                    code: '005',
+                    message: 'Hubo un error en la bd ' + err
+                });
+
+                return;
+            }
+            if (rows.length > 0) {
+                id_permiso = rows[0].id_permiso;
+                conn.query('UPDATE permisologia SET id_usuario = ?, modulo_ventas= ?, modulo_compras=?, modulo_inventario=?, modulo_bancos=?, modulo_proveedores =? WHERE id_permiso = ?', [id_usuario, data.perm_ventas, data.perm_compras, data.perm_inventario, data.perm_bancos, data.perm_proveedores, id_permiso], (err, rows) => {
+                    if (err) {
+                        res.status(500).json({
+                            success: false,
+                            code: '005',
+                            message: 'Hubo un error en la bd ' + err
+                        });
+
+                        return;
+                    } else {
+                        res.status(201).json({
+                            success: true,
+                            code: '021',
+                            message: 'Permisología actualizada con éxito',
+                        });
+                    }
+                });
+            } else {
+                conn.query('INSERT INTO permisologia (id_usuario,modulo_ventas,modulo_compras,modulo_inventario,modulo_bancos,modulo_proveedores) VALUES(?,?,?,?,?,?)', [id_usuario, data.perm_ventas, data.perm_compras, data.perm_inventario, data.perm_bancos, data.perm_proveedores], (err, rows) => {
+                    if (err) {
+                        res.status(500).json({
+                            success: false,
+                            code: '005',
+                            message: 'Hubo un error en la bd ' + err
+                        });
+
+                        return;
+                    } else {
+                        res.status(201).json({
+                            success: true,
+                            code: '021',
+                            message: 'Permisología ingresada con éxito',
+                        });
+                    }
+                });
+            }
+
+        });
+        //conn.query('UPDATE permisologia SET status = 0 WHERE username = ?')
+    });
+};
+
+//Obtener permisologias de usuarios
+models.getPermissions = (req, res) => {
+
 };
 
 //Crear plantillas de permisologia model

@@ -197,7 +197,7 @@ models.setPermissions = (req, res) => {
                         res.status(201).json({
                             success: true,
                             code: '021',
-                            message: 'Permisología ingresada con éxito',
+                            message: 'Permisología actualizada con éxito',
                         });
                     }
                 });

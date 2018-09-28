@@ -1,0 +1,112 @@
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 200px;
+}
+
+.search-center {
+    width: 25%;
+    display: block;
+    margin: auto;
+}
+
+.search-center .mat-form-field {
+    width: 100%
+}
+
+.search-center ::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+.search-center ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+.search-center ::ng-deep .mat-form-field-infix {
+    border-top: 0 solid transparent;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.search-center input {
+    background-color: rgba(0, 0, 0, 0.16);
+    height: 40px;
+    padding: 15px 35px 15px 15px;
+    border-radius: 2px;
+}
+
+.icon-search-color {
+    animation-name: fadeIn;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    color: rgba(0, 0, 0, 0.438);
+}
+
+.search-center input:focus {
+    animation-name: fadeIn;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    background-color: #fff;
+    color: black;
+}
+
+.search-center .icon-search {
+    position: absolute;
+    margin-left: -30px;
+    margin-top: -29px;
+    font-size: 25px;
+}
+
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.mat-toolbar-row:last-child {
+    height: auto;
+}
+
+.logo-nav {
+    max-height: 45px;
+    position: absolute;
+    top: 10px;
+}
+
+.hide-autocomplete {
+    display: none;
+}
+
+@media (min-width:990px) {
+    .sidenav {
+        display: none;
+    }
+    .logo-nav-responsive {
+        display: none;
+    }
+}
+
+@media (max-width:990px) {
+    .logo-nav {
+        display: none;
+    }
+    .hide-menu {
+        display: none;
+    }
+    .search-center {
+        display: none;
+    }
+}

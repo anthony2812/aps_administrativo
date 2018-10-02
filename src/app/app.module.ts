@@ -9,7 +9,7 @@ import { MatFormFieldModule, MatInputModule, MatSelectModule, MatAutocompleteMod
 import { MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatChipsModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DatepickerModule, WavesModule } from 'ng-uikit-pro-standard';
+import { DatepickerModule, TimePickerModule, WavesModule } from 'ng-uikit-pro-standard';
 
 import { APP_ROUTING } from './app.routes';
 
@@ -36,6 +36,7 @@ import { DateTimeControlsComponent } from './components/date-time-controls/date-
     MDBBootstrapModulesPro.forRoot(),
     BrowserAnimationsModule,
     MatFormFieldModule,
+    TimePickerModule,
     MatInputModule,
     MatSelectModule,
     MatAutocompleteModule,

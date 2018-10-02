@@ -1,0 +1,148 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-8">
+            <mat-toolbar color="accent">
+                <h1>Formulario ejemplo</h1>
+            </mat-toolbar>
+            <mat-card>
+                <mat-card-content>
+                    <mat-form-field class="col-6" appearance="legacy">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field class="col-6" appearance="legacy">
+                        <mat-label>Apellido</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <div class="w-100"></div>
+                    <mat-form-field class="col" appearance="legacy">
+                        <mat-label>Seleccionar</mat-label>
+                        <mat-select>
+                            <mat-option value="option">Option</mat-option>
+                            <mat-option value="option">Option1</mat-option>
+                            <mat-option value="option">Option2</mat-option>
+                            <mat-option value="option">Option3</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="w-100"></div>
+                    <mat-form-field class="col" appearance="legacy">
+                        <mat-label>Mensaje</mat-label>
+                        <textarea matInput rows="6" placeholder="Mensaje"></textarea>
+                    </mat-form-field>
+                    <div class="w-100"></div>
+                    <div class="col">
+                        <button mat-raised-button color="accent">Enter</button>
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-lg-4">
+            <!--Card-->
+            <mdb-card>
+                <!--Card image-->
+                <div class="view overlay waves-light" mdbWavesEffect>
+                    <mdb-card-img src="http://pages.revox.io/dashboard/4.1.0/angular/assets/img/dashboard/social_new.jpg"></mdb-card-img>
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!--Button-->
+                <a class="btn-floating btn-action ml-auto mr-4 waves-light background-color-accent" mdbWavesEffect>
+                    <i class="fa fa-chevron-right pl-1 waves-light" mdbWavesEffect></i>
+                </a>
+                <mdb-card-body>
+                    <!--Title-->
+                    <mdb-card-title>
+                        <h4>Movimiento semanal</h4>
+                        <hr>
+                    </mdb-card-title>
+                </mdb-card-body>
+                <!--/.Card content-->
+                <!-- Card footer -->
+                <mdb-card-footer class="background-color-primary text-center">
+                    <ul class="list-unstyled list-inline font-small mt-3">
+                        <li class="list-inline-item pr-2 white-text">
+                            <i class="fa fa-chevron-up pr-1" style="color: rgb(87, 255, 137)"></i>$25.000
+                        </li>
+                        <li class="list-inline-item pr-2 white-text">
+                            <i class="fa fa-chevron-down pr-1" style="color: red"></i>$200
+                        </li>
+                    </ul>
+                </mdb-card-footer>
+                <!-- Card footer -->
+            </mdb-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <mat-toolbar class="background-color-white font-color-accent">
+                <h1>Formularios con validaciones</h1>
+            </mat-toolbar>
+            <mat-card>
+                <mat-card-content>
+                    <mat-form-field class="col" appearance="legacy">
+                        <mat-label>Seleccionar animal</mat-label>
+                        <mat-select placeholder="Favorite animal" [formControl]="animalControl" required>
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let animal of animals" [value]="animal">
+                                {{animal.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
+                        <mat-hint>{{animalControl.value?.sound}}</mat-hint>
+                    </mat-form-field>
+                    <div class="w-100"></div>
+                    <mat-form-field class="col" appearance="legacy">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Introducir e-mail" [formControl]="email" required>
+                        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <div class="w-100"></div>
+                    <mat-form-field class="col" hintLabel="Max 40 caracteres" appearance="legacy">
+                        <mat-label>Mensaje</mat-label>
+                        <textarea matInput #textarea rows="6" maxlength="40" placeholder="Maximo 40 caracteres"></textarea>
+                        <mat-hint align="end">{{textarea.value?.length || 0}}/40</mat-hint>
+                    </mat-form-field>
+                    <div class="w-100"></div>
+                    <div class="col">
+                        <button mat-raised-button color="primary">Enter</button>
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <mat-toolbar color="primary">
+                <h1>Formulario ejemplo</h1>
+            </mat-toolbar>
+
+            <mat-card>
+                <mat-card-content>
+                    <mat-form-field class="col">
+                        <mat-chip-list #chipList>
+                            <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable" (removed)="remove(fruit)" aria-orientation="vertical">
+                                {{fruit}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                            <input placeholder="Selecciona fruta..." #fruitInput [formControl]="fruitCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                                {{fruit}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <div class="w-100"></div>
+                    <div class="col">
+                        <button mat-raised-button color="accent">Enter</button>
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>

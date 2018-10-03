@@ -1,13 +1,24 @@
 <div class="animated fadeIn">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <mat-toolbar color="accent">
-                <h1>Formulario ejemplo</h1>
+                <h1>Seleccionar Fechas</h1>
             </mat-toolbar>
             <mat-card>
                 <mat-card-content>
-                    <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Selected date'" required></mdb-date-picker>
-
+                    <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Seleccionar Fecha'" required></mdb-date-picker>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <mat-toolbar class="background-color-white font-color-accent">
+                <h1>Seleccionar Horas</h1>
+            </mat-toolbar>
+            <mat-card>
+                <mat-card-content>
+                    <mdb-time-picker [buttonLabel]="'Hecho'" [twelvehour]="true" [darktheme]="false" [placeholder]="'Selecciona hora'" [showClock]="false"></mdb-time-picker>
                 </mat-card-content>
             </mat-card>
         </div>

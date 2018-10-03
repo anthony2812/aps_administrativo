@@ -44,7 +44,21 @@ body {
     animation-name: fadeIn;
 }
 
+.mat-toolbar {
+    z-index: 0 !important;
+}
+
 // Formularios
 .mat-form-field {
     margin-bottom: 10px;
+}
+
+.picker__frame {
+    min-height: 580px !important;
+}
+
+.picker__frame select {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
 }

@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DateTimeControlsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
 
   ngOnInit() {

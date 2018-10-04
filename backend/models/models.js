@@ -1,6 +1,7 @@
 //Global variables
 const jwt = require('jsonwebtoken');
 var SEED = require('../config/config').SEED;
+const promises = require('../promises/promises');
 const models = {};
 let tryLogin = 0;
 let token;
@@ -184,7 +185,28 @@ models.setPermissions = (req, res) => {
                     }
                 });
             } else {
-                conn.query('INSERT INTO permisologia (id_usuario,modulo_ventas,modulo_compras,modulo_inventario,modulo_bancos,modulo_proveedores) VALUES(?,?,?,?,?,?)', [id_usuario, data.perm_ventas, data.perm_compras, data.perm_inventario, data.perm_bancos, data.perm_proveedores], (err, rows) => {
+                promises.insertPermission([id_usuario, data.perm_ventas, data.perm_compras, data.perm_inventario, data.perm_bancos, data.perm_proveedores])
+                    .then(function(response) {
+                        return promises.insertPermissionVentas([id_usuario, data.perm_pedidos, data.perm_cotizaciones, data.perm_factura_ventas, data.perm_dev_ventas, data.perm_registro_clientes, data.perm_cierre_caja]);
+                    })
+                    .then(function(response) {
+                        return promises.insertPermissionCompras([id_usuario, data.perm_factura_compra, data.perm_orden_compra, data.perm_requisiciones, data.perm_devoluciones_compras, data.perm_proveedor]);
+                    })
+                    .then(function(response) {
+                        return promises.insertPermissionInventario([id_usuario, data.perm_entradas, data.perm_salidas, data.perm_art_serv, data.perm_almacenes, data.perm_existencia, data.perm_cambio_precio]);
+                    })
+                    .then(function(response) {
+                        return res.status(201).json({
+                            success: true,
+                            code: '021',
+                            message: 'Permisología Insertada con éxito',
+                        });
+                    })
+
+                .catch((err) => {
+                    console.log("error", err);
+                });
+                /*conn.query('INSERT INTO permisologia (id_usuario,modulo_ventas,modulo_compras,modulo_inventario,modulo_bancos,modulo_proveedores) VALUES(?,?,?,?,?,?)', [id_usuario, data.perm_ventas, data.perm_compras, data.perm_inventario, data.perm_bancos, data.perm_proveedores], (err, rows) => {
                     if (err) {
                         res.status(500).json({
                             success: false,
@@ -200,7 +222,7 @@ models.setPermissions = (req, res) => {
                             message: 'Permisología actualizada con éxito',
                         });
                     }
-                });
+                });*/
             }
 
         });
@@ -265,12 +287,57 @@ models.getTemplates = (req, res) => {
 };
 
 //Test
-models.other = (req, res) => {
+models.other = (req, res, next) => {
 
+    promises.getTest()
+        .then(function(response) {
+            return promises.getTest2();
+        })
+
+    .catch((err) => {
+        console.log("error", err);
+    });
+    /*getTest()
+        .then(getTest2).then(next())
+        .catch((err) => {
+            console.log("error", err);
+        });*/
     res.json({
         ok: true,
         message: "This is other page",
         timestamp: new Date()
     });
 };
+
+function getTest() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (resolve) {
+                console.log("1 are ready! ");
+                resolve();
+            } else {
+                reject();
+                throw "Error en getTest2";
+            }
+        }, 400);
+    });
+}
+
+function getTest2() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (resolve) {
+                console.log("2 are ready!");
+                resolve();
+
+            } else {
+                reject();
+                throw "Error en getTest2";
+            }
+
+
+            //resolve();
+        }, 100);
+    });
+}
 module.exports = models;

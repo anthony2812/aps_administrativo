@@ -45,6 +45,7 @@
         "ng-uikit-pro-standard": "git+https://oauth2:M1fy9sZVw5zr5Lzoq957@git.mdbootstrap.com/mdb/angular/ng-uikit-pro-standard.git",
         "node-localstorage": "^1.3.1",
         "nodemon": "^1.18.4",
+        "promise-mysql": "^3.3.1",
         "rxjs": "~6.2.0",
         "screenfull": "^3.3.0",
         "serve-index": "^1.9.1",

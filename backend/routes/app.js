@@ -18,7 +18,7 @@ router.post('/createtemplates', middlewareAuth.checkToken, generalController.cre
 router.post('/getTemplates', middlewareAuth.checkToken, generalController.getTemplates);
 
 //Test
-router.get('/other', middlewareAuth.checkToken, generalController.other);
+router.get('/other', generalController.other);
 
 
 module.exports = router;

@@ -6,19 +6,43 @@
             </mat-toolbar>
             <mat-card>
                 <mat-card-content>
-                    <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Seleccionar Fecha'" required></mdb-date-picker>
+                    <mat-card-content>
+                        <mat-form-field>
+                            <input matInput [matDatepicker]="startdatePicker" placeholder="Escoger fecha Hora">
+                            <mat-datepicker-toggle matSuffix [for]="startdatePicker"></mat-datepicker-toggle>
+                            <mat-datepicker type="datetime" clockStep="5" touchUi="true" #startdatePicker></mat-datepicker>
+                        </mat-form-field>
+                    </mat-card-content>
                 </mat-card-content>
             </mat-card>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
             <mat-toolbar class="background-color-white font-color-accent">
                 <h1>Seleccionar Horas</h1>
             </mat-toolbar>
             <mat-card>
                 <mat-card-content>
-                    <mdb-time-picker [buttonLabel]="'Hecho'" [twelvehour]="true" [darktheme]="false" [placeholder]="'Selecciona hora'" [showClock]="false"></mdb-time-picker>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="startPicker" placeholder="Escoger Hora">
+                        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                        <mat-datepicker type="time" clockStep="5" touchUi="true" #startPicker></mat-datepicker>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-lg-6">
+            <mat-toolbar color="primary">
+                <h1>Seleccionar Fecha</h1>
+            </mat-toolbar>
+            <mat-card>
+                <mat-card-content>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="pick" placeholder="Escoger fecha">
+                        <mat-datepicker-toggle matSuffix [for]="pick"></mat-datepicker-toggle>
+                        <mat-datepicker type="date" clockStep="5" touchUi="true" #pick></mat-datepicker>
+                    </mat-form-field>
                 </mat-card-content>
             </mat-card>
         </div>

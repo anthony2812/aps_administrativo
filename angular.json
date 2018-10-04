@@ -27,7 +27,6 @@
                             },
                             "node_modules/font-awesome/scss/font-awesome.scss",
                             "node_modules/ng-uikit-pro-standard/assets/scss/bootstrap/bootstrap.scss",
-                            "node_modules/ng-uikit-pro-standard/assets/scss/mdb.scss",
                             "src/app/scss/styles.scss"
                         ],
                         "scripts": [

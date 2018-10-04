@@ -4,6 +4,7 @@ $accent-color:#E84226;
 $warn-color:#9B1A0A;
 $grey-color:#f5f5f5;
 $white-color: #fff;
+$black-grey-color: #3b3b3b;
 //overlay color
 $primary-color-overlay: rgba(31, 58, 96, .12);
 $accent-color-overlay: rgba(232, 66, 38, .12);
@@ -1638,11 +1639,12 @@ th.mat-header-cell {
 .cdk-keyboard-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
 .cdk-program-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
 .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
-    background-color: rgba(0, 0, 0, .04)
+    background-color: rgba(0, 0, 0, .04);
+    // color: rgba(0, 0, 0, 0.87)
 }
 
 .mat-calendar-body-today:not(.mat-calendar-body-selected) {
-    border-color: rgba(0, 0, 0, .38)
+    border-color: $accent-color;
 }
 
 .mat-calendar-body-disabled>.mat-calendar-body-today:not(.mat-calendar-body-selected) {
@@ -1669,7 +1671,7 @@ th.mat-header-cell {
 
 .mat-datepicker-content.mat-accent .mat-calendar-body-selected {
     background-color: $accent-color;
-    color: rgba(0, 0, 0, .87)
+    color: $white-color;
 }
 
 .mat-datepicker-content.mat-accent .mat-calendar-body-disabled>.mat-calendar-body-selected {
@@ -2191,11 +2193,11 @@ th.mat-header-cell {
 }
 
 .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-    background-color: #ffc107
+    background-color: $accent-color
 }
 
 .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-    background-color: rgba(255, 193, 7, .5)
+    background-color: $accent-color-overlay;
 }
 
 .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {
@@ -2686,4 +2688,72 @@ th.mat-header-cell {
 
 .mat-simple-snackbar-action {
     color: $accent-color
+}
+
+// date time picker
+.mat-calendar .mat-calendar-header {
+    background-color: $accent-color;
+    color: $white-color
+}
+
+.mat-calendar-years-item-active {
+    color: $accent-color;
+}
+
+.mat-calendar-body-cell:hover:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-background {
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    opacity: 1;
+    transform: scale(1)
+}
+
+.mat-calendar-body-cell:hover:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-background span {
+    color: #000;
+}
+
+.mat-calendar-body-today {
+    color: $white-color
+}
+
+.mat-calendar-body-active:not(.mat-calendar-body-today) {
+    color: $accent-color-ripple
+}
+
+.mat-calendar-body-selected {
+    background: $accent-color;
+    color: $accent-color
+}
+
+.mat-calendar-body-selected+span {
+    color: $white-color
+}
+
+.mat-calendar-body-selected span:hover {
+    color: rgba(0, 0, 0, 0.38) !important;
+}
+
+.mat-clock-center {
+    background-color: $accent-color
+}
+
+.mat-clock-hand {
+    background-color: $accent-color;
+}
+
+.mat-clock-hand::before {
+    background-color: $accent-color
+}
+
+.mat-clock-cell:not(.mat-clock-cell-selected):not(.mat-clock-cell-disabled):hover {
+    background-color: rgba(0, 0, 0, 0.1)
+}
+
+.mat-clock-cell.mat-clock-cell-disabled {
+    color: rgba(0, 0, 0, 0.38);
+    pointer-events: none
+}
+
+.mat-clock-cell.mat-clock-cell-selected {
+    color: white;
+    background-color: $accent-color
 }

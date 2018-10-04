@@ -6,14 +6,20 @@
             </mat-toolbar>
             <mat-card>
                 <mat-card-content>
-                    <mat-form-field class="col-6" appearance="legacy">
+
+                    <mat-form-field class="col-12" appearance="legacy">
                         <mat-label>Nombre</mat-label>
                         <input matInput>
                     </mat-form-field>
-                    <mat-form-field class="col-6" appearance="legacy">
-                        <mat-label>Apellido</mat-label>
-                        <input matInput>
-                    </mat-form-field>
+                    <div class="row" appearance="legacy">
+                        <mat-checkbox class="col-3">Check!</mat-checkbox>
+                        <mat-radio-group class="col-3">
+                            <mat-radio-button value="1">Option 1</mat-radio-button>
+                            <mat-radio-button value="2">Option 2</mat-radio-button>
+                        </mat-radio-group>
+                        <mat-slider class="col-3"></mat-slider>
+                        <mat-slide-toggle class="col-3" color="accent">Slide!</mat-slide-toggle>
+                    </div>
                     <div class="w-100"></div>
                     <mat-form-field class="col" appearance="legacy">
                         <mat-label>Seleccionar</mat-label>
@@ -27,7 +33,7 @@
                     <div class="w-100"></div>
                     <mat-form-field class="col" appearance="legacy">
                         <mat-label>Mensaje</mat-label>
-                        <textarea matInput rows="6" placeholder="Mensaje"></textarea>
+                        <textarea matInput rows="3" placeholder="Mensaje"></textarea>
                     </mat-form-field>
                     <div class="w-100"></div>
                     <div class="col">
@@ -38,29 +44,24 @@
             </mat-card>
         </div>
         <div class="col-lg-4">
-            <!--Card-->
-            <mdb-card>
-                <!--Card image-->
+
+            <!-- <mdb-card>
                 <div class="view overlay waves-light" mdbWavesEffect>
                     <mdb-card-img src="http://pages.revox.io/dashboard/4.1.0/angular/assets/img/dashboard/social_new.jpg"></mdb-card-img>
                     <a>
                         <div class="mask rgba-white-slight"></div>
                     </a>
                 </div>
-
-                <!--Button-->
                 <a class="btn-floating btn-action ml-auto mr-4 waves-light background-color-accent" mdbWavesEffect>
                     <i class="fa fa-chevron-right pl-1 waves-light" mdbWavesEffect></i>
                 </a>
                 <mdb-card-body>
-                    <!--Title-->
                     <mdb-card-title>
                         <h4>Movimiento semanal</h4>
                         <hr>
+                        <p>Texto</p>
                     </mdb-card-title>
                 </mdb-card-body>
-                <!--/.Card content-->
-                <!-- Card footer -->
                 <mdb-card-footer class="background-color-primary text-center">
                     <ul class="list-unstyled list-inline font-small mt-3">
                         <li class="list-inline-item pr-2 white-text">
@@ -71,8 +72,31 @@
                         </li>
                     </ul>
                 </mdb-card-footer>
-                <!-- Card footer -->
-            </mdb-card>
+            </mdb-card> -->
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <h4>Ganancias</h4>
+                    </mat-card-title>
+                    <mat-card-subtitle>Semanales</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="http://pages.revox.io/dashboard/4.1.0/angular/assets/img/dashboard/social_new.jpg" alt="1">
+                <mat-card-content>
+                    <p>
+                        texto
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <ul class=" d-flex justify-content-center list-unstyled list-inline font-small ">
+                        <li class="list-inline-item pr-2 white-text">
+                            <i class="fa fa-chevron-up pr-1" style="color: rgb(87, 255, 137)"></i>$25.000
+                        </li>
+                        <li class="list-inline-item pr-2 white-text">
+                            <i class="fa fa-chevron-down pr-1" style="color: red"></i>$200
+                        </li>
+                    </ul>
+                </mat-card-actions>
+            </mat-card>
         </div>
     </div>
     <div class="row">

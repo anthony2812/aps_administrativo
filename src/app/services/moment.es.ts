@@ -50,23 +50,23 @@ const es = {
     llll: 'ddd, MMM D [de] YYYY [a las] h:mm a'
   },
   calendar: {
-    sameDay: function(): string {
+    sameDay: function (): string {
       // tslint:disable-next-line:no-invalid-this
       return '[hoy a la' + (Number(this.hours()) !== 1 ? 's' : '') + '] LT';
     },
-    nextDay: function(): string {
+    nextDay: function (): string {
       // tslint:disable-next-line:no-invalid-this
       return '[mañana a la' + (Number(this.hours()) !== 1 ? 's' : '') + '] LT';
     },
-    nextWeek: function(): string {
+    nextWeek: function (): string {
       // tslint:disable-next-line:no-invalid-this
       return 'dddd [a la' + (Number(this.hours()) !== 1 ? 's' : '') + '] LT';
     },
-    lastDay: function(): string {
+    lastDay: function (): string {
       // tslint:disable-next-line:no-invalid-this
       return '[ayer a la' + (Number(this.hours()) !== 1 ? 's' : '') + '] LT';
     },
-    lastWeek: function(): string {
+    lastWeek: function (): string {
       // tslint:disable-next-line:no-invalid-this
       return '[el] dddd [pasado a la' + (Number(this.hours()) !== 1 ? 's' : '') + '] LT';
     },
@@ -90,7 +90,7 @@ const es = {
     yy: '%d años'
   },
   dayOfMonthOrdinalParse: /\d{1,2}º/,
-  ordinal: function(n: number): string {
+  ordinal: function (n: number): string {
     return `${n}º`;
   },
   week: {
@@ -100,3 +100,4 @@ const es = {
 };
 
 moment.defineLocale('es', es);
+moment.locale('es');

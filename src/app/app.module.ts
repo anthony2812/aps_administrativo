@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { MDBBootstrapModulesPro } from 'ng-uikit-pro-standard';
+import { MDBSpinningPreloader } from 'ng-uikit-pro-standard';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import {
   MatFormFieldModule, MatInputModule, MatSelectModule, MatAutocompleteModule, MatButtonModule,
   MatTableModule,
@@ -15,9 +18,13 @@ import {
 import { MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatChipsModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDatepickerIntl, MatDatepickerModule, MatMomentDateModule } from '@coachcare/datepicker';
-import { DatepickerEsp } from './services/datepicker-esp';
+import {
+  DateAdapter, MAT_DATE_FORMATS, MatDatepickerIntl, MatDatepickerModule,
+  MatMomentDateModule, MomentDateAdapter
+} from '@coachcare/datepicker';
+import { MAT_MOMENT_DATE_FORMATS } from './services/moment-date-formats';
 
+import { DatepickerEsp } from './services/datepicker-esp';
 
 import { APP_ROUTING } from './app.routes';
 
@@ -27,7 +34,6 @@ import 'hammerjs'; // Revisar
 import * as moment from 'moment';
 import './services/moment.es';
 moment.locale('es');
-
 
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './components/shared/main-nav/main-nav.component';
@@ -49,6 +55,7 @@ import { TablasComponent } from './components/tablas/tablas.component';
     BrowserModule,
     APP_ROUTING,
     BrowserAnimationsModule,
+    MDBBootstrapModulesPro.forRoot(),
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -74,7 +81,11 @@ import { TablasComponent } from './components/tablas/tablas.component';
 
   ],
   providers: [
-    // MDBSpinningPreloader,
+    MDBSpinningPreloader,
+    // { provide: MAT_DATE_LOCALE, useValue: 'es' },
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [LOCALE_ID] },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+    { provide: LOCALE_ID, useValue: 'es' },
     { provide: MatDatepickerIntl, useClass: DatepickerEsp }
   ],
   bootstrap: [AppComponent]

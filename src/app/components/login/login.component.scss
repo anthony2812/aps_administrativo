@@ -1,0 +1,52 @@
+.back-login {
+    background: linear-gradient( rgba(255, 255, 255, 0.9), rgba(211, 211, 211, 0.9)), url(../../../assets/img/back.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.back-login-2 {
+    background: url(../../../assets/img/back-login-2.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.back-login-3 {
+    background: url(../../../assets/img/forklift.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.mat-card {
+    padding: 0px;
+}
+
+.h-80 {
+    height: 80% !important;
+}
+
+.label-input-login {
+    font-size: 16pt;
+    top: 1.11375em;
+    color: #212121;
+}
+
+.placeholder-input-login {
+    padding-top: 13px !important;
+}
+
+.forgot-pass {
+    text-decoration: underline;
+    color: #212121;
+}

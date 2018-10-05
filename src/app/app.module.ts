@@ -41,6 +41,7 @@ import { MenuTopRightComponent } from './components/shared/menu-top-right/menu-t
 import { IndexComponent } from './components/index/index.component';
 import { DateTimeControlsComponent } from './components/date-time-controls/date-time-controls.component';
 import { TablasComponent } from './components/tablas/tablas.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { TablasComponent } from './components/tablas/tablas.component';
     IndexComponent,
     DateTimeControlsComponent,
     TablasComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

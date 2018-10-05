@@ -7,12 +7,12 @@ $white-color: #fff;
 $black-grey-color: #3b3b3b;
 //overlay color
 $primary-color-overlay: rgba(31, 58, 96, .12);
-$accent-color-overlay: rgba(232, 66, 38, .12);
+$accent-color-overlay: rgba(248, 118, 95, 0.12);
 $warn-color-overlay: rgba(155, 26, 10, .12);
 //ripple color
 $primary-color-ripple: rgba(120, 136, 159, .12);
-$accent-color-ripple: rgba(248, 198, 189, .12);
-$warn-color-ripple: rgba(195, 117, 108, .12);
+$accent-color-ripple: rgba(255, 200, 191, 0.336);
+$warn-color-ripple: rgba(255, 133, 119, 0.12);
 // fuente
 $font-family: 'Lato',
 Roboto,
@@ -750,7 +750,7 @@ input.mat-input-element {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
-    transition: opacity, transform 0s cubic-bezier(0, 0, .2, 1);
+    transition: opacity, transform 0s cubic-bezier(0, 1.04, 1, 1.01);
     transform: scale(0)
 }
 
@@ -1380,21 +1380,21 @@ textarea.cdk-textarea-autosize-measuring {
 .mat-flat-button.mat-primary .mat-ripple-element,
 .mat-mini-fab.mat-primary .mat-ripple-element,
 .mat-raised-button.mat-primary .mat-ripple-element {
-    background-color: rgba(255, 255, 255, .1)
+    background-color: $primary-color-ripple
 }
 
 .mat-fab.mat-accent .mat-ripple-element,
 .mat-flat-button.mat-accent .mat-ripple-element,
 .mat-mini-fab.mat-accent .mat-ripple-element,
 .mat-raised-button.mat-accent .mat-ripple-element {
-    background-color: rgba(0, 0, 0, .1)
+    background-color: $accent-color-ripple
 }
 
 .mat-fab.mat-warn .mat-ripple-element,
 .mat-flat-button.mat-warn .mat-ripple-element,
 .mat-mini-fab.mat-warn .mat-ripple-element,
 .mat-raised-button.mat-warn .mat-ripple-element {
-    background-color: rgba(255, 255, 255, .1)
+    background-color: $primary-color-ripple
 }
 
 .mat-icon-button.mat-primary .mat-ripple-element {
@@ -1402,11 +1402,11 @@ textarea.cdk-textarea-autosize-measuring {
 }
 
 .mat-icon-button.mat-accent .mat-ripple-element {
-    background-color: rgba(255, 215, 64, .2)
+    background-color: accent-color-ripple
 }
 
 .mat-icon-button.mat-warn .mat-ripple-element {
-    background-color: rgba(244, 67, 54, .2)
+    background-color: $warn-color-ripple
 }
 
 .mat-button-toggle {
@@ -2560,29 +2560,34 @@ th.mat-header-cell {
 .mat-tab-group.mat-background-accent .mat-tab-link,
 .mat-tab-nav-bar.mat-background-accent .mat-tab-label,
 .mat-tab-nav-bar.mat-background-accent .mat-tab-link {
-    color: rgba(0, 0, 0, .87)
+    // color: rgba(0, 0, 0, .87)
+    color: rgba(255, 0, 0, 0.87)
 }
 
 .mat-tab-group.mat-background-accent .mat-tab-label.mat-tab-disabled,
 .mat-tab-group.mat-background-accent .mat-tab-link.mat-tab-disabled,
 .mat-tab-nav-bar.mat-background-accent .mat-tab-label.mat-tab-disabled,
 .mat-tab-nav-bar.mat-background-accent .mat-tab-link.mat-tab-disabled {
-    color: rgba(0, 0, 0, .4)
+    // color: rgba(0, 0, 0, .4)
+    color: rgba(255, 0, 0, 0.4)
 }
 
 .mat-tab-group.mat-background-accent .mat-tab-header-pagination-chevron,
 .mat-tab-nav-bar.mat-background-accent .mat-tab-header-pagination-chevron {
-    border-color: rgba(0, 0, 0, .87)
+    // border-color: rgba(0, 0, 0, .87)
+    border-color: rgba(255, 0, 0, 0.87)
 }
 
 .mat-tab-group.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron,
 .mat-tab-nav-bar.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
-    border-color: rgba(0, 0, 0, .4)
+    // border-color: rgba(0, 0, 0, .4)
+    border-color: rgba(255, 0, 0, 0.4)
 }
 
 .mat-tab-group.mat-background-accent .mat-ripple-element,
 .mat-tab-nav-bar.mat-background-accent .mat-ripple-element {
-    background-color: rgba(0, 0, 0, .12)
+    // background-color: rgba(0, 0, 0, .12)
+    background-color: rgb(255, 0, 0)
 }
 
 .mat-tab-group.mat-background-warn .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled),

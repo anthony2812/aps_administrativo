@@ -1,0 +1,47 @@
+<div class="animated fadeIn back-login">
+    <div class="back-login-2">
+        <div class="container-fluid d-flex h-100">
+            <div class="row align-self-center w-100 h-80 no-gutters">
+                <mat-card class="col-lg-8 mx-auto">
+                    <div class="row h-100 no-gutters flex-grow-1">
+                        <div class="col-lg-4 d-none d-xl-inline d-md-none d-sm-none">
+                            <img src="../../../assets/img/forklift.jpg" class="img-fluid" alt="Responsive image">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row align-items-center justify-content-md-center h-100">
+                                <mat-card-content class="col-6  mx-auto">
+                                    <div class="w-100 justify-content-center">
+                                        <h1 style="color:#E84226; text-align: center;">Bienvenido</h1>
+                                        <h4 style="color:rgb(141, 141, 141);text-align: center;">Por favor ingresa con tu cuenta</h4>
+                                    </div>
+                                    <mat-form-field floatLabel="always" class="w-100 justify-content-center " style="margin:30px 0px 30px 0px;">
+                                        <mat-label class="label-input-login">Usuario</mat-label>
+                                        <input matInput class="placeholder-input-login" placeholder="Introducir Usuario" [formControl]="email" required>
+                                        <mat-icon matSuffix>person_outline</mat-icon>
+                                        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+                                    <div class="w-100"></div>
+                                    <mat-form-field floatLabel="always" class="w-100 justify-content-center">
+                                        <mat-label class="label-input-login">Contraseña</mat-label>
+                                        <input matInput class="placeholder-input-login" placeholder="Introducir contraseña" [type]="hide ? 'password' : 'text'">
+                                        <mat-icon matSuffix style="cursor: pointer" (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                                    </mat-form-field>
+                                    <div class="w-100"></div>
+                                    <div class="d-flex justify-content-end" style="margin:0px 0px 30px 0px;">
+                                        <a href="#" class="forgot-pass ">¿Olvidaste tu contraseña?</a>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="d-flex justify-content-center" style="margin:30px 0px 30px 0px;">
+                                        <button mat-fab color="accent">
+                                                    <mat-icon aria-label="Ingresar">arrow_forward</mat-icon>
+                                         </button>
+                                    </div>
+                                </mat-card-content>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

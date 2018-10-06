@@ -8,7 +8,8 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "dev": "nodemon backend/server.js"
+        "dev": "nodemon backend/server.js",
+         "postinstall": "ng build --aot -prod"
     },
     "private": true,
     "dependencies": {
@@ -73,5 +74,9 @@
         "ts-node": "~7.0.0",
         "tslint": "~5.11.0",
         "typescript": "~2.9.2"
+    },
+    "engines": {
+        "node": "10.9.0",
+        "npm": "5.10.0"
     }
 }

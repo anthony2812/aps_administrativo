@@ -13,9 +13,14 @@ import {
   MatCheckboxModule,
   MatRadioModule,
   MatSliderModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatIconModule, MatListModule,
+  MatCardModule,
+  MatChipsModule,
+  MatBottomSheetModule
 } from '@angular/material';
-import { MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatChipsModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -38,10 +43,13 @@ moment.locale('es');
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './components/shared/main-nav/main-nav.component';
 import { MenuTopRightComponent } from './components/shared/menu-top-right/menu-top-right.component';
-import { IndexComponent } from './components/index/index.component';
-import { DateTimeControlsComponent } from './components/date-time-controls/date-time-controls.component';
-import { TablasComponent } from './components/tablas/tablas.component';
+import { IndexComponent } from './components/pages/index/index.component';
+import { DateTimeControlsComponent } from './components/pages/date-time-controls/date-time-controls.component';
+import { TablasComponent } from './components/pages/tablas/tablas.component';
 import { LoginComponent } from './components/login/login.component';
+import { PagesComponent } from './components/pages/pages.component';
+import { VentanasComponent } from './components/pages/ventanas/ventanas.component';
+import { BottonSheetComponent } from './components/pages/ventanas/botton-sheet.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +60,9 @@ import { LoginComponent } from './components/login/login.component';
     DateTimeControlsComponent,
     TablasComponent,
     LoginComponent,
+    PagesComponent,
+    VentanasComponent,
+    BottonSheetComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,8 +90,8 @@ import { LoginComponent } from './components/login/login.component';
     MatSliderModule,
     MatSlideToggleModule,
     MatDatepickerModule,
-    MatMomentDateModule
-
+    MatMomentDateModule,
+    MatBottomSheetModule
   ],
   providers: [
     MDBSpinningPreloader,
@@ -90,6 +101,7 @@ import { LoginComponent } from './components/login/login.component';
     { provide: LOCALE_ID, useValue: 'es' },
     { provide: MatDatepickerIntl, useClass: DatepickerEsp }
   ],
+  entryComponents: [BottonSheetComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

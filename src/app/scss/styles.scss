@@ -1,5 +1,6 @@
         /* You can add global styles to this file, and also import other style files */
         
+        @import "~@angular/cdk/_overlay.scss";
         @import url('https://fonts.googleapis.com/css?family=Lato');
         html,
         body {
@@ -653,3 +654,6 @@
             align-items: center;
             cursor: pointer
         }
+        
+        //Botton Sheet
+        @include cdk-overlay;

@@ -12,7 +12,7 @@ import { map, startWith } from 'rxjs/operators';
 export class MainNavComponent implements OnInit {
 
   listMenu = new FormControl();
-  options: string[] = ['Formas', 'Fecha-Horas', 'Tablas', 'Link 4'];
+  options: string[] = ['Formas', 'Fecha-Horas', 'Tablas'];
   showAutocomplete = false;
   showColorBlack = false;
   filteredOptions: Observable<string[]>;
